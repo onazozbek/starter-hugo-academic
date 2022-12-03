@@ -7,6 +7,7 @@ bio: My research interests include distributed robotics, mobile computing and
 interests:
   - Architectural Design
   - Interior Design
+  - Urban Sociology
 social:
   - icon: envelope
     icon_pack: fas
