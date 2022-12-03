@@ -35,15 +35,12 @@ organizations:
     url: https://www.ozyegin.edu.tr/en
 education:
   courses:
-    - course: PhD in Artificial Intelligence
-      institution: Stanford University
-      year: 2012
-    - course: MEng in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2009
-    - course: BSc in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2008
+    - course: MSc City and Architecture
+      institution: Ozyegin University
+      year: 2022
+    - course: BSc in Architecture
+      institution: Ozyegin University
+      year: 2020
 superuser: true
 status:
   icon: ☕️
