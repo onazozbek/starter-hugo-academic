@@ -1,6 +1,6 @@
 ---
 title: Özlem Naz Özbek
-role: Professor of Artificial Intelligence
+role: M.Sc. Architect
 bio: My research interests include distributed robotics, mobile computing and
   programmable matter.
 interests:
@@ -51,6 +51,5 @@ highlight_name: true
 first_name: Alice
 email: ""
 ---
-
-Alice Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Özlem Naz Özbek is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
 {style="text-align: justify;"}
