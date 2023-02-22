@@ -49,5 +49,5 @@ highlight_name: true
 first_name: Alice
 email: ""
 ---
-Özlem Naz Özbek is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Özlem Naz Özbek is M﻿.Sc student in City and Architecture Thesis Program at Özyeğin University. Her research interests include architectural design and urban sociology.
 {style="text-align: justify;"}
