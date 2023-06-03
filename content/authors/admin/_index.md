@@ -2,8 +2,7 @@
 title: Özlem Naz Özbek
 role: M.Sc. Architect
 avatar_filename: avatar.jpg
-bio: My research interests include distributed robotics, mobile computing and
-  programmable matter.
+bio: My research interests include architectural design and urban sociology.
 interests:
   - Architectural Design
   - Interior Design
