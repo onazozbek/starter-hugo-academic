@@ -33,7 +33,7 @@ education:
   courses:
     - course: MSc City and Architecture
       institution: Ozyegin University
-      year: 2022
+      year: 2024
     - course: BSc in Architecture
       institution: Ozyegin University
       year: 2020
