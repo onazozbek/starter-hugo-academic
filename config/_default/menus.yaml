@@ -7,24 +7,47 @@ main:
   - name: Home
     url: '#about'
     weight: 10
+  - name: Experience
+    url: '#experience'
+    weight: 20
+
+
   - name: Posts
+    identifier: posts
+    url: ''
+    weight: 30
+  - name: All Posts
+    parent: posts
+    url: '/post'
+    weight: 10
+  - name: Recent Posts
+    parent: posts
     url: '#posts'
     weight: 20
+
   - name: Projects
-    url: '#projects'
-    weight: 30
-  - name: Talks
-    url: '#talks'
+    identifier: projects
+    url: ''
     weight: 40
+  - name: All Projects
+    parent: projects
+    url: '/project'
+    weight: 10
+  - name: Recent projects
+    parent: projects
+    url: '#projects'
+    weight: 20
+
   - name: Publications
     url: '#featured'
     weight: 50
+
   - name: Contact
     url: '#contact'
     weight: 60
-
+  - name: CV/Resume
+    url: uploads/resume.pdf
+    weight: 70
 # Link to a PDF of your resume/CV from the menu.
 # To enable, copy your resume/CV to `static/uploads/resume.pdf` and uncomment the lines below.
-#  - name: CV
-#    url: uploads/resume.pdf
-#    weight: 70
+
