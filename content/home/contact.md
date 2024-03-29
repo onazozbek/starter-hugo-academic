@@ -46,7 +46,7 @@ content:
     - icon: twitter
       icon_pack: fab
       name: You can DM or Give a Follow
-      link: 'https://twitter.com/_nazozbek_
+      link: 'https://twitter.com/_nazozbek_'
     # - icon: video
     #   icon_pack: fas
     #   name: Zoom Me
