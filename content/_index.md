@@ -40,7 +40,7 @@ sections:
         - title: Architect
           company: Rogi Mimarlık
           company_url: 'https://www.rogi.com.tr'
-          company_logo: org-x
+          # company_logo: org-x
           location: Istanbul
           date_start: '2023-12'
           date_end: ''
@@ -48,7 +48,7 @@ sections:
         - title: Architect
           company: YapıArtı Mimarlık
           company_url: 'https://www.yapiarti.com.tr/'
-          company_logo: yapi-arti
+          # company_logo: yapi-arti
           location: Istanbul
           date_start: '2020-11'
           date_end: '2022-09'
