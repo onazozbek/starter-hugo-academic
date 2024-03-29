@@ -40,9 +40,9 @@ education:
 superuser: true
 status:
   icon: ☕️
-last_name: Wu
+last_name: Özbek
 highlight_name: true
-first_name: Alice
+first_name: Özlem Naz
 email: ""
 ---
 <!--StartFragment-->
@@ -51,4 +51,4 @@ email: ""
 Naz is passionate about using her knowledge and skills to create more inclusive and sustainable urban spaces. She believes that architecture can shape how people live and interact with each other, and she is committed to using her expertise to positively impact the world. In addition to her academic pursuits, Naz is also actively involved in community outreach and volunteer work, using her skills to help improve the lives of those around her.
 
 <!--EndFragment-->
-{style="text-align: justify;"}
+{style="text-align: left;"}
