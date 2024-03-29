@@ -44,8 +44,6 @@ sections:
     id: contact
     content:
       title: Contact
-      subtitle:
--      # Contact (add or remove contact options as necessary)
       email: nazozbek@gmail.com
       appointment_url: 'https://calendly.com'
       address:
