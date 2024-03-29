@@ -27,7 +27,7 @@ experience:
     company_url: 'https://www.rogi.com.tr'
     company_logo: ozyegin-logo
     location: Istanbul
-    date_start: '2023-12'
+    date_start: '2023-12-01'
     date_end: ''
     description: 
 
@@ -36,8 +36,8 @@ experience:
     company_url: 'https://www.yapiarti.com.tr/'
     company_logo: ozyegin-logo
     location: Istanbul
-    date_start: '2020-11'
-    date_end: '2022-09'
+    date_start: '2020-11-01'
+    date_end: '2022-09-01'
     description: |2-
         * Worked on shop drawings of the furniture according to interior design projects of Turkish and European Hotel Groups, family house projects
 
