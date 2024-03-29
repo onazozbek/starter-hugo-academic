@@ -25,7 +25,7 @@ experience:
   - title: Architect
     company: Rogi Mimarlık
     company_url: 'https://www.rogi.com.tr'
-    company_logo: ozyegin-logo
+    company_logo: rogi-logo
     location: Istanbul
     date_start: '2023-12-01'
     date_end: ''
@@ -34,7 +34,7 @@ experience:
   - title: Architect
     company: YapıArtı Mimarlık
     company_url: 'https://www.yapiarti.com.tr/'
-    company_logo: ozyegin-logo
+    company_logo: yapiarti-logo
     location: Istanbul
     date_start: '2020-11-01'
     date_end: '2022-09-01'
