@@ -56,8 +56,8 @@ sections:
               Drew shop drawings of the furniture according to interior design projects of Turkish and European Hotel
 Groups, family house projects
 
-    # design:
-    #   columns: '2'
+  #   design:
+  #     columns: '2'
   # - block: accomplishments
   #   content:
   #     # Note: `&shy;` is used to add a 'soft' hyphen in a long heading.
