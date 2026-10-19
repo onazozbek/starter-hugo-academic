@@ -1,43 +1,61 @@
-# Astro Starter Kit: Minimal
+# Özlem Naz Özbek — Architecture & Research Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
-```
+A modern, high-performance personal portfolio and academic resume website built with [Astro](https://astro.build) and deployed seamlessly to [Netlify](https://www.netlify.com).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🏛️ Overview
 
-## 🚀 Project Structure
+- **Design Philosophy:** "Calm Editorial" — warm architectural minimalism, zero gradients, crisp 1px borders, and tactile typography.
+- **Typography:** Syne (display / headings) + Inter (reading prose).
+- **Color Palette:** Warm Linen (`#F4F1EA`), Clean Paper (`#FFFFFF`), Charcoal Ink (`#1A1A1A`), Burnt Terracotta (`#A85A32`).
+- **Framework:** Astro 5 with Content Collections & static prerendering.
+- **Adapter & Host:** Netlify (`@astrojs/netlify`) with automated continuous deployment.
+- **Features:**
+  - Modern interactive Home page with bio, career timeline, education, and tag cloud.
+  - Architectural essays and writing powered by Markdown content collections.
+  - Dedicated Curriculum Vitae (`/cv`) with print-optimized CSS for PDF export.
+  - Contact channels and social profile links.
+  - Automated XML sitemap generation & Open Graph / Twitter Card SEO metadata.
+  - Custom architectural favicon and touch icons.
 
-Inside of your Astro project, you'll see the following folders and files:
+## 📁 Project Structure
 
 ```text
 /
 ├── public/
+│   ├── avatar.jpg          # Profile portrait
+│   ├── favicon.png         # Custom architectural icon
+│   └── favicon.svg         # SVG vector icon
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/         # Reusable Astro components (Hero, Navbar, Timeline, etc.)
+│   ├── content/
+│   │   └── blog/           # Markdown essays & reflections
+│   ├── data/               # Structured profiles, work experience, education data
+│   ├── layouts/            # BaseLayout & BlogLayout shells
+│   ├── pages/              # Static routes (/, /blog, /cv, /contact)
+│   └── styles/
+│       └── global.css      # Design tokens, typography & print stylesheets
+├── astro.config.mjs        # Astro configuration & Netlify adapter
+└── netlify.toml            # Netlify build and environment configuration
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🛠️ Development & Build Commands
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Command | Action |
+| :--- | :--- |
+| `npm install` | Install all dependencies |
+| `npm run dev` | Start local development server |
+| `npm run build` | Build production static site to `dist/` |
+| `npm run preview` | Preview production build locally |
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 🚀 Deployment
 
-## 🧞 Commands
+The site is configured for continuous deployment on **Netlify**. Every push to the `main` branch automatically triggers Netlify's build process via `netlify.toml`:
 
-All commands are run from the root of the project, from a terminal:
+```toml
+[build]
+  command = "npm run build"
+  publish = "dist"
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+[build.environment]
+  NODE_VERSION = "20"
+```
