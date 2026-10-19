@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import { profile } from '../data/profile';
 import { experiences } from '../data/experience';
 import { educations } from '../data/education';
-import { skills, interests } from '../data/interests';
+import { skills, interests, languages, certificates, extracurriculars } from '../data/interests';
 ---
 
 <Layout
@@ -26,7 +26,7 @@ import { skills, interests } from '../data/interests';
             <span class="cv-sep">·</span>
             <a href="https://www.linkedin.com/in/nazozbek97/" target="_blank" rel="noopener">linkedin.com/in/nazozbek97</a>
             <span class="cv-sep">·</span>
-            <span>İstanbul, Turkey</span>
+            <span>{profile.location}</span>
           </div>
         </div>
         <div class="cv-actions no-print">
@@ -39,9 +39,9 @@ import { skills, interests } from '../data/interests';
 
       <div class="cv-body">
 
-        <!-- About -->
+        <!-- Profile Summary -->
         <section class="cv-section">
-          <h2 class="cv-section-title">Profile</h2>
+          <h2 class="cv-section-title">Professional Summary</h2>
           <p class="cv-bio">{profile.bio}</p>
         </section>
 
@@ -85,35 +85,82 @@ import { skills, interests } from '../data/interests';
                       ? <a href={edu.institutionUrl} target="_blank" rel="noopener">{edu.institution}</a>
                       : edu.institution
                     }
+                    {edu.cgpa && <span class="cv-entry__cgpa"> · CGPA: {edu.cgpa}</span>}
+                    {edu.honors && <span class="cv-entry__honor"> · {edu.honors}</span>}
                   </p>
                 </div>
-                <p class="cv-entry__dates">{edu.year}</p>
+                <p class="cv-entry__dates">{edu.period ?? edu.year}</p>
               </div>
               {edu.description && <p class="cv-entry__note">{edu.description}</p>}
             </div>
           ))}
         </section>
 
-        <!-- Skills & Interests -->
+        <!-- Skills & Languages Two Column -->
         <div class="cv-two-col">
           <section class="cv-section">
-            <h2 class="cv-section-title">Tools & Skills</h2>
+            <h2 class="cv-section-title">Computer Skills & Tools</h2>
             <div class="cv-tags">
-              {skills.map(s => <span class="tag tag--muted">{s.name}</span>)}
+              {skills.filter(s => s.category === 'software').map(s => <span class="tag tag--muted">{s.name}</span>)}
+            </div>
+            <h2 class="cv-section-title" style="margin-top: var(--space-6);">Professional Disciplines</h2>
+            <div class="cv-tags">
+              {skills.filter(s => s.category === 'discipline').map(s => <span class="tag">{s.name}</span>)}
             </div>
           </section>
 
           <section class="cv-section">
-            <h2 class="cv-section-title">Research Interests</h2>
+            <h2 class="cv-section-title">Language Skills</h2>
+            <div class="cv-lang-list">
+              {languages.map(l => (
+                <div class="cv-lang-item">
+                  <span class="cv-lang-name">{l.language}</span>
+                  <span class="cv-lang-level tag tag--muted">{l.level}</span>
+                </div>
+              ))}
+            </div>
+
+            <h2 class="cv-section-title" style="margin-top: var(--space-6);">Research Interests</h2>
             <div class="cv-tags">
               {interests.map(i => <span class="tag">{i}</span>)}
             </div>
           </section>
         </div>
 
-        <!-- Social Links -->
+        <!-- Certificates & Workshops -->
         <section class="cv-section">
-          <h2 class="cv-section-title">Online</h2>
+          <h2 class="cv-section-title">Certificates & Workshops</h2>
+          <div class="cv-cert-grid">
+            {certificates.map(cert => (
+              <div class="cv-cert-item">
+                <div class="cv-cert-header">
+                  <h4 class="cv-cert-title">{cert.title}</h4>
+                  <span class="cv-cert-date">{cert.date}</span>
+                </div>
+                <p class="cv-cert-org">{cert.organization}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- Extracurricular Activities -->
+        <section class="cv-section">
+          <h2 class="cv-section-title">Extracurricular Activities</h2>
+          <div class="cv-cert-grid">
+            {extracurriculars.map(extra => (
+              <div class="cv-cert-item">
+                <div class="cv-cert-header">
+                  <h4 class="cv-cert-title">{extra.role} — {extra.organization}</h4>
+                  <span class="cv-cert-date">{extra.period}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- Online Profiles -->
+        <section class="cv-section no-print">
+          <h2 class="cv-section-title">Online & Professional Links</h2>
           <div class="cv-links">
             {profile.socials.map(s => (
               <a href={s.href} target="_blank" rel="noopener" class="cv-link">
@@ -191,7 +238,7 @@ import { skills, interests } from '../data/interests';
   font-size: 0.95rem;
   line-height: 1.8;
   color: var(--text-secondary);
-  max-width: 70ch;
+  max-width: 75ch;
 }
 
 .cv-entry {
@@ -224,6 +271,7 @@ import { skills, interests } from '../data/interests';
 }
 .cv-entry__sub a { color: var(--accent); font-weight: 500; }
 .cv-entry__loc { color: var(--text-muted); }
+.cv-entry__cgpa, .cv-entry__honor { color: var(--text-muted); font-size: 0.825rem; }
 
 .cv-entry__dates {
   font-size: 0.8125rem;
@@ -252,7 +300,7 @@ import { skills, interests } from '../data/interests';
   font-size: 0.85rem;
   color: var(--text-muted);
   margin: var(--space-3) 0 0;
-  font-style: italic;
+  line-height: 1.5;
 }
 
 .cv-two-col {
@@ -265,6 +313,72 @@ import { skills, interests } from '../data/interests';
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+}
+
+.cv-lang-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.cv-lang-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.cv-lang-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.cv-lang-level {
+  font-size: 0.75rem;
+}
+
+.cv-cert-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.cv-cert-item {
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.cv-cert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.cv-cert-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.cv-cert-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.cv-cert-org {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin: var(--space-1) 0 0;
 }
 
 .cv-links {
@@ -299,10 +413,11 @@ import { skills, interests } from '../data/interests';
 /* Print */
 @media print {
   .cv-page { padding-top: 0; }
-  .navbar, footer, .cv-actions { display: none !important; }
+  .navbar, footer, .cv-actions, .no-print { display: none !important; }
   .cv-header { border-color: #000; }
   .cv-section-title { color: #000; border-color: #ccc; }
   .cv-name { font-size: 1.75rem; }
   .tag { border: 1px solid #ccc; background: #f5f5f5; color: #333; }
+  .cv-cert-item, .cv-lang-item { border-color: #eee; }
 }
 </style>

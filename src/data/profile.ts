@@ -1,12 +1,13 @@
 export const profile = {
-  name: 'Özlem Naz Özbek',
-  nameShort: 'Naz Özbek',
-  role: 'M.Sc. Architect',
+  name: 'Özlem Naz Özbek Kirman',
+  nameShort: 'Naz Özbek Kirman',
+  role: 'M.Sc. Architect & Researcher',
   organization: 'Özyeğin University',
   organizationUrl: 'https://www.ozyegin.edu.tr/en',
   email: 'nazozbek@gmail.com',
-  bio: `Özlem Naz Özbek is a graduate researcher at Özyeğin University, pursuing her MSc in City and Architecture with a focus on migration's impact on İstanbul's architecture. She delves into the city's rich migration history to understand how it shapes its built environment. Naz aims to create inclusive urban spaces catering to diverse populations. Believing in architecture's power to influence daily interactions, she aspires to positively impact society through sustainable, inclusive urban development.`,
-  bioShort: 'Graduate researcher at Özyeğin University studying migration\'s impact on İstanbul\'s architecture and urban form.',
+  location: 'İstanbul, Turkey',
+  bio: `Özlem Naz Özbek Kirman is an architect and graduate researcher at Özyeğin University, completing her MSc in City and Architecture with a focus on migration's impact on İstanbul's urban form. Her professional expertise spans technical office coordination, detailed architectural drawings, custom interior fittings, and construction supervision across prominent commercial, hospitality, and residential projects in Turkey and internationally (including the DREAM GAMES İstanbul Office, Emaar Square North Tower, and hospitality developments across Europe).`,
+  bioShort: 'Architect and graduate researcher specializing in technical office coordination, detailed architectural design, and urban architecture.',
   avatar: '/avatar.jpg',
   socials: [
     {
@@ -30,5 +31,5 @@ export const profile = {
       icon: 'twitter',
     },
   ],
-  resumeUrl: '/resume.pdf',
+  resumeUrl: '/cv',
 };
