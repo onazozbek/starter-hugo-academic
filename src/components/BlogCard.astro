@@ -1,0 +1,112 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  slug: string;
+  tags?: string[];
+}
+
+const { title, description, pubDate, slug, tags = [] } = Astro.props;
+
+const formattedDate = pubDate.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<article class="blog-card card">
+  <a href={`/blog/${slug}`} class="blog-card__link" aria-label={`Read: ${title}`}>
+    <header class="blog-card__header">
+      <p class="blog-card__date">
+        <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+      </p>
+      <h3 class="blog-card__title">{title}</h3>
+      <p class="blog-card__desc">{description}</p>
+    </header>
+    {tags.length > 0 && (
+      <footer class="blog-card__footer">
+        <div class="blog-card__tags">
+          {tags.slice(0, 3).map(tag => <span class="tag tag--muted">{tag}</span>)}
+        </div>
+        <span class="blog-card__cta">Read →</span>
+      </footer>
+    )}
+  </a>
+</article>
+
+<style>
+.blog-card {
+  padding: 0;
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.blog-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--accent);
+}
+
+.blog-card__link {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  gap: var(--space-4);
+}
+
+.blog-card__date {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.blog-card__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+  transition: color var(--transition);
+}
+.blog-card:hover .blog-card__title { color: var(--accent); }
+
+.blog-card__desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.blog-card__tags {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.blog-card__cta {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent);
+  transition: transform var(--transition);
+  flex-shrink: 0;
+}
+.blog-card:hover .blog-card__cta { transform: translateX(4px); }
+</style>

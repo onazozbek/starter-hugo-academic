@@ -1,0 +1,93 @@
+---
+import { educations } from '../data/education';
+---
+
+<section class="education-section" id="education">
+  <div class="container">
+    <p class="section-label">Education</p>
+    <h2 class="section-title">Academic Background</h2>
+
+    <div class="edu-grid">
+      {educations.map(edu => (
+        <div class="edu-card card">
+          <div class="edu-card__top">
+            <div class="edu-degree-badge">{edu.degree}</div>
+            <span class="edu-year">{edu.year}</span>
+          </div>
+          <h3 class="edu-field">{edu.field}</h3>
+          <p class="edu-institution">
+            {edu.institutionUrl
+              ? <a href={edu.institutionUrl} target="_blank" rel="noopener">{edu.institution}</a>
+              : edu.institution
+            }
+          </p>
+          {edu.description && <p class="edu-desc">{edu.description}</p>}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.section-title { margin-bottom: var(--space-7); }
+
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-5);
+}
+
+.edu-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.edu-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edu-degree-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: var(--radius);
+  letter-spacing: 0.04em;
+}
+
+.edu-year {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.edu-field {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.edu-institution {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+.edu-institution a { color: var(--accent); font-weight: 500; }
+.edu-institution a:hover { color: var(--accent-hover); }
+
+.edu-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+</style>

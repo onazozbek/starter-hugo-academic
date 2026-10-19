@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { profile } from '../data/profile';
+---
+
+<Layout
+  title={`Contact — ${profile.name}`}
+  description={`Get in touch with ${profile.name}, ${profile.role}.`}
+>
+  <Navbar />
+  <main class="contact-page">
+    <div class="container">
+      <header class="contact-header">
+        <p class="section-label">Get in touch</p>
+        <h1 class="contact-title">Let's connect.</h1>
+        <p class="contact-subtitle">
+          Whether you're interested in discussing architecture, urban research, collaboration, or just want to say hello — I'd love to hear from you.
+        </p>
+      </header>
+
+      <div class="contact-grid">
+        <div class="contact-direct">
+          <h2 class="contact-block-title">Direct contact</h2>
+          <a href={`mailto:${profile.email}`} class="email-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            {profile.email}
+          </a>
+        </div>
+
+        <div class="contact-socials-block">
+          <h2 class="contact-block-title">Find me online</h2>
+          <div class="contact-socials">
+            <a href="https://www.linkedin.com/in/nazozbek97/" target="_blank" rel="noopener" class="social-card">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              <div>
+                <p class="social-card__name">LinkedIn</p>
+                <p class="social-card__handle">nazozbek97</p>
+              </div>
+            </a>
+            <a href="https://twitter.com/_nazozbek_" target="_blank" rel="noopener" class="social-card">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.262 5.632 5.902-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              <div>
+                <p class="social-card__name">Twitter / X</p>
+                <p class="social-card__handle">@_nazozbek_</p>
+              </div>
+            </a>
+            <a href="https://github.com/onazozbek" target="_blank" rel="noopener" class="social-card">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <div>
+                <p class="social-card__name">GitHub</p>
+                <p class="social-card__handle">onazozbek</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+.contact-page {
+  padding-top: calc(var(--nav-height) + var(--space-10));
+  padding-bottom: var(--space-10);
+  min-height: 80vh;
+}
+
+.contact-header {
+  margin-bottom: var(--space-9);
+  max-width: 600px;
+}
+
+.contact-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: var(--space-4);
+}
+
+.contact-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 50ch;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-9);
+  align-items: start;
+}
+
+.contact-block-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: var(--space-5);
+}
+
+.email-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: var(--space-5) var(--space-6);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition);
+}
+.email-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+.email-link svg { flex-shrink: 0; }
+
+.contact-socials {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.social-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: all var(--transition);
+}
+.social-card:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+.social-card__name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  transition: color var(--transition);
+}
+.social-card:hover .social-card__name { color: var(--accent); }
+
+.social-card__handle {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+</style>

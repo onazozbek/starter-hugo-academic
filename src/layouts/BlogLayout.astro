@@ -1,0 +1,105 @@
+---
+import Layout from './Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  tags?: string[];
+}
+
+const { title, description, pubDate, updatedDate, tags = [] } = Astro.props;
+
+const formattedPub = pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const formattedUpd = updatedDate?.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Layout title={`${title} — Naz Özbek`} description={description} type="article">
+  <Navbar />
+  <main>
+    <article class="blog-article">
+      <div class="container">
+        <header class="article-header">
+          <div class="article-meta">
+            <span class="section-label">Essay</span>
+            {tags.length > 0 && (
+              <div class="tag-list">
+                {tags.map(tag => <span class="tag tag--muted">{tag}</span>)}
+              </div>
+            )}
+          </div>
+          <h1 class="article-title">{title}</h1>
+          <p class="article-description">{description}</p>
+          <div class="article-date">
+            <time datetime={pubDate.toISOString()}>{formattedPub}</time>
+            {updatedDate && (
+              <span class="updated">· Updated <time datetime={updatedDate.toISOString()}>{formattedUpd}</time></span>
+            )}
+          </div>
+        </header>
+        <div class="prose article-body">
+          <slot />
+        </div>
+        <footer class="article-footer">
+          <a href="/blog" class="btn btn-outline">← Back to writing</a>
+        </footer>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+.blog-article { padding: var(--space-10) 0; }
+
+.article-header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-7);
+  margin-bottom: var(--space-7);
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.tag-list {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.article-title {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  margin-bottom: var(--space-4);
+  max-width: 20ch;
+}
+
+.article-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 55ch;
+  margin-bottom: var(--space-4);
+}
+
+.article-date {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.updated { margin-left: var(--space-2); }
+
+.article-body { max-width: 68ch; }
+
+.article-footer {
+  margin-top: var(--space-9);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border);
+}
+</style>

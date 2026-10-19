@@ -1,0 +1,308 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { profile } from '../data/profile';
+import { experiences } from '../data/experience';
+import { educations } from '../data/education';
+import { skills, interests } from '../data/interests';
+---
+
+<Layout
+  title={`CV — ${profile.name}`}
+  description={`Curriculum Vitae of ${profile.name}, ${profile.role}.`}
+>
+  <Navbar />
+  <main class="cv-page">
+    <div class="container">
+
+      <!-- CV Header -->
+      <header class="cv-header">
+        <div class="cv-header__info">
+          <h1 class="cv-name">{profile.name}</h1>
+          <p class="cv-role">{profile.role}</p>
+          <div class="cv-contacts">
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+            <span class="cv-sep">·</span>
+            <a href="https://www.linkedin.com/in/nazozbek97/" target="_blank" rel="noopener">linkedin.com/in/nazozbek97</a>
+            <span class="cv-sep">·</span>
+            <span>İstanbul, Turkey</span>
+          </div>
+        </div>
+        <div class="cv-actions no-print">
+          <button onclick="window.print()" class="btn btn-primary" id="printBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print / Save PDF
+          </button>
+        </div>
+      </header>
+
+      <div class="cv-body">
+
+        <!-- About -->
+        <section class="cv-section">
+          <h2 class="cv-section-title">Profile</h2>
+          <p class="cv-bio">{profile.bio}</p>
+        </section>
+
+        <!-- Experience -->
+        <section class="cv-section">
+          <h2 class="cv-section-title">Work Experience</h2>
+          {experiences.map(job => (
+            <div class="cv-entry">
+              <div class="cv-entry__header">
+                <div>
+                  <h3 class="cv-entry__title">{job.title}</h3>
+                  <p class="cv-entry__sub">
+                    {job.companyUrl
+                      ? <a href={job.companyUrl} target="_blank" rel="noopener">{job.company}</a>
+                      : job.company
+                    }
+                    <span class="cv-entry__loc"> · {job.location}</span>
+                  </p>
+                </div>
+                <p class="cv-entry__dates">{job.dateStart} — {job.dateEnd ?? 'Present'}</p>
+              </div>
+              {job.description.length > 0 && (
+                <ul class="cv-entry__list">
+                  {job.description.map(desc => <li>{desc}</li>)}
+                </ul>
+              )}
+            </div>
+          ))}
+        </section>
+
+        <!-- Education -->
+        <section class="cv-section">
+          <h2 class="cv-section-title">Education</h2>
+          {educations.map(edu => (
+            <div class="cv-entry">
+              <div class="cv-entry__header">
+                <div>
+                  <h3 class="cv-entry__title">{edu.degree} in {edu.field}</h3>
+                  <p class="cv-entry__sub">
+                    {edu.institutionUrl
+                      ? <a href={edu.institutionUrl} target="_blank" rel="noopener">{edu.institution}</a>
+                      : edu.institution
+                    }
+                  </p>
+                </div>
+                <p class="cv-entry__dates">{edu.year}</p>
+              </div>
+              {edu.description && <p class="cv-entry__note">{edu.description}</p>}
+            </div>
+          ))}
+        </section>
+
+        <!-- Skills & Interests -->
+        <div class="cv-two-col">
+          <section class="cv-section">
+            <h2 class="cv-section-title">Tools & Skills</h2>
+            <div class="cv-tags">
+              {skills.map(s => <span class="tag tag--muted">{s.name}</span>)}
+            </div>
+          </section>
+
+          <section class="cv-section">
+            <h2 class="cv-section-title">Research Interests</h2>
+            <div class="cv-tags">
+              {interests.map(i => <span class="tag">{i}</span>)}
+            </div>
+          </section>
+        </div>
+
+        <!-- Social Links -->
+        <section class="cv-section">
+          <h2 class="cv-section-title">Online</h2>
+          <div class="cv-links">
+            {profile.socials.map(s => (
+              <a href={s.href} target="_blank" rel="noopener" class="cv-link">
+                <span class="cv-link__icon">{s.name}</span>
+                <span class="cv-link__url">{s.href.replace('mailto:', '')}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+.cv-page {
+  padding-top: calc(var(--nav-height) + var(--space-9));
+  padding-bottom: var(--space-10);
+}
+
+.cv-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding-bottom: var(--space-7);
+  border-bottom: 2px solid var(--text-primary);
+  margin-bottom: var(--space-7);
+  flex-wrap: wrap;
+}
+
+.cv-name {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  margin-bottom: var(--space-2);
+}
+
+.cv-role {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-3);
+}
+
+.cv-contacts {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+.cv-contacts a { color: var(--accent); font-weight: 500; }
+.cv-sep { color: var(--border-dark); }
+
+.cv-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+}
+
+.cv-section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--space-5);
+}
+
+.cv-bio {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 70ch;
+}
+
+.cv-entry {
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--space-5);
+}
+.cv-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.cv-entry__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3);
+}
+
+.cv-entry__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.cv-entry__sub {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+.cv-entry__sub a { color: var(--accent); font-weight: 500; }
+.cv-entry__loc { color: var(--text-muted); }
+
+.cv-entry__dates {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+  margin: 0;
+}
+
+.cv-entry__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.cv-entry__list li {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  padding-left: var(--space-4);
+  position: relative;
+  margin-bottom: var(--space-2);
+  line-height: 1.6;
+}
+.cv-entry__list li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+.cv-entry__note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: var(--space-3) 0 0;
+  font-style: italic;
+}
+
+.cv-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-7);
+}
+
+.cv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.cv-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.cv-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: 0.875rem;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: color var(--transition);
+}
+.cv-link:hover { color: var(--accent); }
+
+.cv-link__icon {
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 80px;
+}
+
+.cv-link__url { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .cv-two-col { grid-template-columns: 1fr; }
+}
+
+/* Print */
+@media print {
+  .cv-page { padding-top: 0; }
+  .navbar, footer, .cv-actions { display: none !important; }
+  .cv-header { border-color: #000; }
+  .cv-section-title { color: #000; border-color: #ccc; }
+  .cv-name { font-size: 1.75rem; }
+  .tag { border: 1px solid #ccc; background: #f5f5f5; color: #333; }
+}
+</style>
